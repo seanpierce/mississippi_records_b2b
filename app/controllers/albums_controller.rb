@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
 
   # catalog page
   def index
-    @albums = Album.all
+    @albums = Album.all.order(:artist)
   end
 
   # item detail page
