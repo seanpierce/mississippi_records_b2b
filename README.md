@@ -1,24 +1,6 @@
-# README
+# Mississippi Records B2B
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mississippi Records B2B is a Ruby on Rails application for Portland-based Record store/ distributer Mississippi Records.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Author, Contact
+Sean Pierce, sumler.sean@gmail.com
