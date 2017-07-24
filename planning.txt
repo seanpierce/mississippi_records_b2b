@@ -1,0 +1,14 @@
+Planning for Mississippi Records B2B application
+
+Immediate thoughts/ needs:
+Pages controller
+Schema for each pages elements, allowing editing of any page
+** Devise and rails admin/ user auth
+Cart
+
+
+Other things to think about:
+rails actionmailers
+paperclip with mp3s (as well as images)
+paperclip connected to S3 bucket
+Deploy to dreamhost/ apache server
