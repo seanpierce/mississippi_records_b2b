@@ -5,7 +5,6 @@ RailsAdmin.config do |config|
   ## == Devise ==
   config.authorize_with do
       unless current_user.try(:admin?)
-        flash[:alert] = "Nahh"
         redirect_to main_app.root_path
       end
     end

@@ -17,3 +17,22 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.alert {
+  color: red;
+  padding: 0;
+}
+.notice {
+  color: green;
+  padding: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  border-bottom: solid 1px #ccc;
+  &:focus {
+    outline: none;
+  }
+}
