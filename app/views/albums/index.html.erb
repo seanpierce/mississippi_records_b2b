@@ -1,8 +1,14 @@
-<ul>
+<ul id="catalog-list">
   <% @albums.each do |album| %>
-    <li>
-      <strong><%= album.artist %> - <%= album.title %></strong><br>
-      <div><%= markdown(album.description) %></div>
+    <li class="row">
+      <div class="item-image col-sm-2">
+        <%= image_tag(album.image) %>
+      </div>
+      <div class="item-info col-sm-10">
+        <strong><%= album.artist %> - <%= album.title %></strong><br>
+        <%= album.catalog %><br>
+        <%= number_to_currency(album.price) %>
+      </div>
     </li>
   <% end %>
 </ul>
