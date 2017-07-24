@@ -1,5 +1,8 @@
 <ul>
   <% @albums.each do |album| %>
-    <li><%= album.artist %> - <%= album.title %></li>
+    <li>
+      <strong><%= album.artist %> - <%= album.title %></strong><br>
+      <div><%= markdown(album.description) %></div>
+    </li>
   <% end %>
 </ul>

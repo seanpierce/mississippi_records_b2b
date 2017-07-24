@@ -9,26 +9,29 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <ul>
-            <li><%= current_user.username if current_user %></li>
-            <li>Link</li>
-            <li>Link</li>
-            <li><%= link_to "Log In", new_user_session_path if !user_signed_in? %></li>
-            <li><%= link_to "Log Out", destroy_user_session_path, :method => "delete" if user_signed_in? %></li>
-          </ul>
-        </div>
-        <div class="col-sm-9">
-          <% if flash[:notice] %>
+    <div class="my-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <ul>
+              <li><%= link_to current_user.username, edit_user_registration_path if current_user %></li>
+              <li><%= link_to "Catalog", catalog_path %></li>
+              <li>How To Use This Site</li>
+              <li>About Us</li>
+              <li>Links</li>
+              <li><%= link_to "Log In", new_user_session_path if !user_signed_in? %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, :method => "delete" if user_signed_in? %></li>
+            </ul>
+          </div>
+          <div class="col-sm-9">
+            <% if flash[:notice] %>
             <p class="notice"><%= flash[:notice] %></p>
-          <% end %>
-          <% if flash[:alert] %>
+            <% end %>
+            <% if flash[:alert] %>
             <p class="alert"><%= flash[:alert] %></p>
-          <% end %>
-
-          <%= yield %>
+            <% end %>
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>

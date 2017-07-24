@@ -18,6 +18,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.my-content {
+  margin: 3em 0;
+}
+
 .alert {
   color: red;
   padding: 0;
@@ -35,9 +39,17 @@ h1, h2, h3, h4 {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
+  margin-bottom: 1em;
+  width: 100%;
   border: none;
   border-bottom: solid 1px #ccc;
   &:focus {
     outline: none;
   }
+}
+
+input[type="submit"] {
+  margin: 1em 0;
+  background-color: white;
+  border: solid 1px #333;
 }
