@@ -21,7 +21,7 @@ class Seed
         category: ["mrecs", "distro"].sample,
         description: Faker::Lorem.paragraph(2),
         price: rand(10..40),
-        image: [
+        image: File.join([
           "http://mississippirecords.store/images/blindowlwilson-st.jpg",
           "http://mississippirecords.store/images/blindunclegaspardanddelmalachney-onthewatersedge.jpg",
           "http://mississippirecords.store/images/deadmoon-inthegraveyard.jpg",
@@ -32,7 +32,7 @@ class Seed
           "http://mississippirecords.store/images/isaiahowens-youwithoutsincastthefirststone.jpg",
           "http://mississippirecords.store/images/uralthomasandthepain-st-lp.jpg",
           "http://mississippirecords.store/images/spacelady-greatesthits.jpg"
-        ].sample,
+        ].sample),
         audio: "http://mississippirecords.store/audio/deadmoon-dontburnthefires-graveyard.mp3"
       )
     end
