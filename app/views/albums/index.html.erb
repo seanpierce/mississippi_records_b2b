@@ -1,14 +1,12 @@
-<ul id="catalog-list">
-  <% @albums.each do |album| %>
-    <li class="row">
-      <div class="item-image col-sm-2">
-        <%= image_tag(album.image) %>
+<% @albums.each do |album| %>
+  <a href="<%= album_path(album) %>">
+    <div class="album" style="background-image:url(<%= album.image %>)">
+      <div class="darken"></div>
+      <div class="album-content">
+        <%= album.artist %>
+        <br>
+        <%= number_to_currency album.price %>
       </div>
-      <div class="item-info col-sm-10">
-        <strong><%= album.artist %> - <%= album.title %></strong><br>
-        <%= album.catalog %><br>
-        <%= number_to_currency(album.price) %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+    </div>
+  </a>
+<% end %>

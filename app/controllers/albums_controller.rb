@@ -7,4 +7,9 @@ class AlbumsController < ApplicationController
     @albums = Album.all
   end
 
+  # item detail page
+  def show
+    @album = Album.find(params[:id])
+  end
+
 end

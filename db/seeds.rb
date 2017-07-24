@@ -13,12 +13,12 @@ class Seed
   end
 
   def createAlbums
-    20.times do
+    60.times do
       Album.create!(
         artist: Faker::Book.author,
         title: Faker::Book.title,
         catalog: "MR #{rand(0..9)}#{rand(0..9)}#{rand(0..9)}",
-        category: "mrecs",
+        category: ["mrecs", "distro"].sample,
         description: Faker::Lorem.paragraph(2),
         price: rand(10..40),
         image: [
