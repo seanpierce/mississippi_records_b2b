@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: "pages#home"
+
   resources :albums
+
   get '/catalog' , to: 'albums#index'
+  get '/how-to-use-this-site' , to: 'pages#how_to'
+  get '/about-us' , to: 'pages#about_us'
+  get '/links' , to: 'pages#links'
 
 end
