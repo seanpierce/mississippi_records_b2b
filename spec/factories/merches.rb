@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :merch do
+  factory :item do
     name "MyString"
     description "MyText"
     proce 1

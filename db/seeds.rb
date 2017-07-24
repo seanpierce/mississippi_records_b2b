@@ -3,7 +3,9 @@ class Seed
   def self.begin
     seed = Seed.new
     seed.createAlbums
+    seed.createUsers
     p "Created #{Album.count} Albums"
+    p "Created #{User.count} Users"
   end
 
   def images
@@ -34,6 +36,24 @@ class Seed
         audio: "http://mississippirecords.store/audio/deadmoon-dontburnthefires-graveyard.mp3"
       )
     end
+  end
+
+  def createUsers
+    User.create!(
+      username: 'admin',
+      admin: true,
+      email: 'admin@admin.com',
+      password: '1234567',
+      password_confirmation: '1234567'
+    )
+
+    User.create!(
+      username: 'user',
+      admin: false,
+      email: 'user@user.com',
+      password: '1234567',
+      password_confirmation: '1234567'
+    )
   end
 
 end
