@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   resources :albums
 
+  resources :orders
+  resources :order_items
+
+  resource :cart, only: [:show]
+
   get '/catalog' , to: 'albums#index'
   get '/how-to-use-this-site' , to: 'pages#how_to'
   get '/about-us' , to: 'pages#about_us'

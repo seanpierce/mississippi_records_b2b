@@ -8,10 +8,6 @@ class Seed
     p "Created #{User.count} Users"
   end
 
-  def images
-
-  end
-
   def createAlbums
     60.times do
       Album.create!(

@@ -1,12 +1,28 @@
-<% @albums.each do |album| %>
-  <a href="<%= album_path(album) %>">
-    <div class="album" style="background-image:url(<%= album.image %>)">
-      <div class="darken"></div>
-      <div class="album-content">
-        <%= album.artist %>
-        <br>
-        <%= number_to_currency album.price %>
-      </div>
+<ul id="catalog-nav">
+  <li>All</li> /
+  <li>Mississippi Vinyl</li> /
+  <li>Distributed Vinyl</li> /
+  <li>Mississippi Cassettes</li> /
+  <li>Distributed Cassettes</li> /
+  <li>Other</li>
+</ul>
+
+<ul id="albums">
+  <% @albums.each do |album| %>
+  <li class="album">
+    <div class="album-image-div">
+      <%= image_tag album.image %>
     </div>
-  </a>
-<% end %>
+    <div class="album-info-div">
+      <strong><%= album.artist %> - <%= album.title %></strong><br>
+      <%= album.catalog %><br>
+      <%= number_to_currency album.price %>
+      <%= form_for @order_item do |f| %>
+        <%= f.hidden_field :album_id, value: album.id %>
+        <%= f.number_field :quantity %>
+        <%= f.submit "Add to cart" %>
+      <% end %>
+    </div>
+  </li>
+  <% end %>
+</ul>
