@@ -7,7 +7,12 @@ class Album < ApplicationRecord
   validates :title, :artist, :price, :category, :catalog, presence: true
   validates :price, numericality: true
 
-
-  scope :catagory, -> (catagory){ where("catagory like ?", "#{catagory}") }
+  scope :category, -> (input) {
+    if input != "all"
+      where("category like ?", "#{input}")
+    else
+      Album.all
+    end
+  }
 
 end

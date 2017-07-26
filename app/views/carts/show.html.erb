@@ -1,7 +1,13 @@
 <% if @order_items.any? %>
   <% @order_items.each do |item| %>
-    <p><%= item.album.title %> | <%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %></p>
-    <p> Unit Price: <%= number_to_currency item.album.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.album.price * item.quantity) %></p>
+  <div class="order-item">
+    <p><%= link_to "X", order_item_path(item), class: 'delete', :data => {:confirm => "You sure?", :method => "delete"} %> <strong><%= item.album.title %> - <%= item.album.title %></strong></p>
+    <p class="order-item-total">
+      Unit Price: <%= number_to_currency item.album.price %><br>
+      Quantity: <%= item.quantity %><br>
+      Total Price: <%= number_to_currency (item.album.price * item.quantity) %></p>
+      <div style="clear: both;"></div>
+  </div>
   <% end %>
   <p>Your Total: <%= number_to_currency current_order.total_price %></p>
 <% else %>

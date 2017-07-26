@@ -4,7 +4,11 @@ class AlbumsController < ApplicationController
 
   # catalog page
   def index
-    @albums = Album.all.order(:artist)
+    if params[:category]
+      @albums = Album.category(params[:category]).order(:artist)
+    else
+      @albums = Album.all.order(:artist)
+    end
     @order_item = current_order.order_items.new
   end
 

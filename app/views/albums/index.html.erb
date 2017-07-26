@@ -1,10 +1,10 @@
 <ul id="catalog-nav">
-  <li>All</li> /
-  <li>Mississippi Vinyl</li> /
-  <li>Distributed Vinyl</li> /
-  <li>Mississippi Cassettes</li> /
-  <li>Distributed Cassettes</li> /
-  <li>Other</li>
+  <li><%= link_to "All", catalog_path %></li>
+  <li><%= link_to "Mississippi Vinyl", catalog_path(category: "mrecs") %></li>
+  <li><%= link_to "Distributed Vinyl", catalog_path(category: "distro") %></li>
+  <li><%= link_to "Mississippi Cassettes", catalog_path(category: "mcass") %></li>
+  <li><%= link_to "Distributed Cassettes", catalog_path(category: "dcass") %></li>
+  <li><%= link_to "Other", catalog_path(category: "other") %></li>
 </ul>
 
 <ul id="albums">

@@ -10,7 +10,7 @@ class OrderItemsController < ApplicationController
     else
       flash[:alert] = "Something went wrong. Please try again!"
     end
-    redirect_to catalog_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

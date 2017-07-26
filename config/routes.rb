@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
 
   get '/catalog' , to: 'albums#index'
+  get '/catalog/:category' , to: 'albums#index'
+  # get '/catalog/mrecs' , to: 'albums#mrecs'
+  # get '/catalog/distro' , to: 'albums#distro'
+  # get '/catalog/mcass' , to: 'albums#mcass'
+  # get '/catalog/dcass' , to: 'albums#dcass'
+  # get '/catalog/other' , to: 'albums#other'
   get '/how-to-use-this-site' , to: 'pages#how_to'
   get '/about-us' , to: 'pages#about_us'
   get '/links' , to: 'pages#links'
