@@ -9,7 +9,7 @@ class Seed
   end
 
   def createAlbums
-    30.times do
+    60.times do
       Album.create!(
         artist: Faker::Book.author,
         title: Faker::Book.title,

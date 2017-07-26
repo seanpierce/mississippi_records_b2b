@@ -15,4 +15,18 @@ class Album < ApplicationRecord
     end
   }
 
+  scope :category_title, -> (input) {
+    if input === "mrecs"
+      "Mississippi Records Vinyl"
+    elsif input === "distro"
+      "Distributed Vinyl"
+    elsif input === "mcass"
+      "Mississippi Records Cassettes"
+    elsif input === "dcass"
+      "Distributed Cassettes"
+    else
+      "Other"
+    end
+  }
+
 end
