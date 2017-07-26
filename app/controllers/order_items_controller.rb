@@ -3,8 +3,12 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @item = @order.order_items.new(item_params)
-    @order.save!
-    session[:order_id] = @order.id
+    if @order.save!
+      session[:order_id] = @order.id
+      flash[:notice] = "#{@item.quantity} copies of #{@item.album.artist} - #{@item.album.title} added to cart."
+    else
+      flash[:alert] = "Something went wrong. Please try again!"
+    end
     redirect_to catalog_path
   end
 
