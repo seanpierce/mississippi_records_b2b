@@ -6,4 +6,8 @@ class Album < ApplicationRecord
 
   validates :title, :artist, :price, :category, :catalog, presence: true
   validates :price, numericality: true
+
+
+  scope :catagory, -> (catagory){ where("catagory like ?", "#{catagory}") }
+
 end

@@ -17,11 +17,14 @@
       <strong><%= album.artist %> - <%= album.title %></strong><br>
       <%= album.catalog %><br>
       <%= number_to_currency album.price %>
-      <%= form_for @order_item do |f| %>
-        <%= f.hidden_field :album_id, value: album.id %>
-        <%= f.number_field :quantity %>
-        <%= f.submit "Add to cart" %>
-      <% end %>
+      <div class="cart-form">
+        <%= form_for @order_item do |f| %>
+          <%= f.hidden_field :album_id, value: album.id %>
+          <%= f.number_field :quantity, min: 1, max: 999, :required => true %>
+          <%= f.submit "", style: "display:none;", id: "album-#{album.id}-submit" %>
+          <%= image_tag 'cart.png', class: "cart", onclick: "document.getElementById('album-#{album.id}-submit').click();" %>
+        <% end %>
+      </div>
     </div>
   </li>
   <% end %>

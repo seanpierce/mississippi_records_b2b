@@ -18,6 +18,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+:root {
+  --list-img-div-width: 80px;
+}
+
 .my-content {
   margin: 3em 0;
 }
@@ -29,6 +33,12 @@
 .notice {
   color: green;
   padding: 0;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -59,32 +69,52 @@ input[type="submit"] {
   border: solid 1px #333;
 }
 
- #albums {
-    .album {
-      margin-bottom: 0.75em;
-      &:nth-child(even) {
-        background-color: #e8e8e8;
-      }
-      .album-image-div {
-        width: 80px;
-        display: inline-block;
-        img {
-          width: 100%;
-        }
-      }
-      .album-info-div {
-        display: inline-block;
-        vertical-align: top;
-      }
-   }
- }
+.my-nav {
+  position: fixed;
+}
 
 #catalog-nav {
+  padding: 0.5em 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: solid 1px #333;
-  position: sticky;
+  background-color: #333;
+  color: white;
+  position: fixed;
   li {
     display: inline;
   }
+}
+
+#albums {
+  margin: 5em 0 2em 0;
+  .album {
+    margin-bottom: 0.75em;
+    &:nth-child(even) {
+      background-color: #e8e8e8;
+    }
+    .album-image-div {
+      width: var(--list-img-div-width);
+      display: inline-block;
+      margin-right: 1em;
+      img {
+        width: 100%;
+      }
+    }
+    .album-info-div {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      // the width of this div is dependent upon the with of the album image
+      width: calc(100% - var(--list-img-div-width) - 2em);
+      .cart-form {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+.cart {
+  cursor: pointer;
+  height: 2em;
+  padding: 5px;
 }
