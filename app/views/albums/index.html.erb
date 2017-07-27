@@ -6,9 +6,9 @@
   <li><%= link_to "Distributed Cassettes", catalog_path(category: "dcass") %></li>
   <li><%= link_to "Other", catalog_path(category: "other") %></li>
   <li id="search-li">
-    <%= form_tag albums_path, method: :get do %>
+    <form action="<%= albums_path %>" method="get">
       <%= text_field_tag :query, nil, :placeholder => 'Search' %>
-    <% end %>
+    </form>
   </li>
 </ul>
 
