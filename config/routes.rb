@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   get '/about-us' , to: 'pages#about_us'
   get '/links' , to: 'pages#links'
 
+  get '/add_one', to: 'carts#add_one'
+  get '/remove_one', to: 'carts#remove_one'
+
 end

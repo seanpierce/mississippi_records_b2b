@@ -4,12 +4,13 @@
     <p><%= link_to "X", order_item_path(item), class: 'delete', :data => {:confirm => "You sure?", :method => "delete"} %> <strong><%= item.album.title %> - <%= item.album.title %></strong></p>
     <p class="order-item-total">
       Unit Price: <%= number_to_currency item.album.price %><br>
-      Quantity: <%= item.quantity %><br>
-      Total Price: <%= number_to_currency (item.album.price * item.quantity) %></p>
+      Quantity: <span class="item-<%= item.id %>-quantity"><%= item.quantity %></span> <%= link_to "⇧",  {controller: "carts", action: "add_one", item: item}, remote: true %><%= link_to "⇩", {controller: "carts", action: "remove_one", item: item}, remote: true %>
+      <br>
+      Total Price: <span class="item-<%= item.id %>-total"><%= number_to_currency (item.album.price * item.quantity) %></span></p>
       <div style="clear: both;"></div>
   </div>
   <% end %>
-  <p>Your Total: <%= number_to_currency current_order.total_price %></p>
+  <p>Your Total: <span class="grand-total"><%= number_to_currency current_order.total_price %></span></p>
 <% else %>
   <p>Your shopping cart is empty.</p>
 <% end %>

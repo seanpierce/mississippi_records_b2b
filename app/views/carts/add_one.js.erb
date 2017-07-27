@@ -1,0 +1,8 @@
+// update quantity count
+$(".item-<%= @item.id %>-quantity").text("<%= @item.quantity %>");
+
+// update item total
+$(".item-<%= @item.id %>-total").text("<%= number_to_currency (@item.album.price * @item.quantity) %>");
+
+// update grand total
+$(".grand-total").text("<%= number_to_currency current_order.total_price %>");
