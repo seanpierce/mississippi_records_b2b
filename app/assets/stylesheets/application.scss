@@ -139,8 +139,14 @@ input[type="submit"] {
     form {
       display: inline;
       input[type="text"] {
+        border: none;
+        padding: 4px;
+        margin-bottom: 0;
         width: 100px;
         color: #333;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }

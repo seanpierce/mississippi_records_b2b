@@ -15,10 +15,12 @@ class CartsController < ApplicationController
 
   def remove_one
     @item = OrderItem.find(params[:item])
-    @item.quantity -= 1
-    @item.save
-    respond_to do |format|
-      format.js
+    if @item.quantity > 1
+      @item.quantity -= 1
+      @item.save
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
