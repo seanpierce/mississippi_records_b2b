@@ -10,7 +10,10 @@
       <div style="clear: both;"></div>
   </div>
   <% end %>
-  <p>Your Total: <span class="grand-total"><%= number_to_currency current_order.total_price %></span></p>
+  <p>
+    <h3>Your Total: <span class="grand-total"><%= number_to_currency current_order.total_price %></span></h3>
+    <%= link_to "Checkout", {controller: "carts", action: "checkout", current_order: current_order} %>
+  </p>
 <% else %>
   <p>Your shopping cart is empty.</p>
 <% end %>

@@ -26,5 +26,6 @@ Rails.application.routes.draw do
 
   get '/add_one', to: 'carts#add_one'
   get '/remove_one', to: 'carts#remove_one'
+  get '/checkout', to: 'carts#checkout'
 
 end

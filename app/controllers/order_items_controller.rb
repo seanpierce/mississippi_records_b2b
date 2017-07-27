@@ -3,6 +3,8 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order.user_id = current_user.id
+    @order.total_price = current_order.calculate_total
+    @order.status = "in_progress"
     @item = @order.order_items.new(item_params)
     if @order.save!
       session[:order_id] = @order.id

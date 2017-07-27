@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   def show
+    current_order.save
     @order_items = current_order.order_items.order(:created_at)
   end
 
@@ -22,6 +23,12 @@ class CartsController < ApplicationController
         format.js
       end
     end
+  end
+
+  def checkout
+    Order.find(current_order.id).destroy
+    flash[:notice] = "Thanks for placing your order. We'll be in touch."
+    redirect_to cart_path
   end
 
 end
