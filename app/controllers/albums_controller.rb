@@ -4,7 +4,9 @@ class AlbumsController < ApplicationController
 
   # catalog page
   def index
-    if params[:category]
+    if params[:query]
+      @albums = Album.search(params[:query])
+    elsif params[:category]
       @albums = Album.category(params[:category]).order(:artist).page params[:page]
       @category_title = Album.category_title(params[:category])
     else

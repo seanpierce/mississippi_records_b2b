@@ -5,33 +5,11 @@
   <li><%= link_to "Mississippi Cassettes", catalog_path(category: "mcass") %></li>
   <li><%= link_to "Distributed Cassettes", catalog_path(category: "dcass") %></li>
   <li><%= link_to "Other", catalog_path(category: "other") %></li>
-</ul>
-
-<ul id="albums">
-
-  <h3><%= @category_title %></h3>
-  <br>
-
-  <% @albums.each do |album| %>
-  <li class="album">
-    <div class="album-image-div">
-      <%= image_tag album.image %>
-    </div>
-    <div class="album-info-div">
-      <strong><%= album.artist %> - <%= album.title %></strong><br>
-      <%= album.catalog %><br>
-      <%= number_to_currency album.price %>
-      <div class="cart-form">
-        <%= form_for @order_item do |f| %>
-          <%= f.hidden_field :album_id, value: album.id %>
-          <%= f.number_field :quantity, min: 1, max: 999, :required => true %>
-          <%= f.submit "", style: "display:none;", id: "album-#{album.id}-submit" %>
-          <%= image_tag 'cart.png', class: "cart", onclick: "document.getElementById('album-#{album.id}-submit').click();" %>
-        <% end %>
-      </div>
-    </div>
+  <li id="search-li">
+    <%= form_tag albums_path, method: :get do %>
+      <%= text_field_tag :query, nil, :placeholder => 'Search' %>
+    <% end %>
   </li>
-  <% end %>
 </ul>
 
-<%= paginate @albums %>
+<%= render partial: "albums", locals: { albums: @albums }%>
