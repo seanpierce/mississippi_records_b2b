@@ -2,26 +2,29 @@
 
   <h3><%= @category_title %></h3>
   <br>
-
-  <% @albums.each do |album| %>
-  <li class="album">
-    <div class="album-image-div">
-      <%= image_tag album.image %>
-    </div>
-    <div class="album-info-div">
-      <strong><%= album.artist %> - <%= album.title %></strong><br>
-      <%= album.catalog %><br>
-      <%= number_to_currency album.price %>
-      <div class="cart-form">
-        <%= form_for @order_item do |f| %>
-          <%= f.hidden_field :album_id, value: album.id %>
-          <%= f.number_field :quantity, min: 1, max: 999, :required => true %>
-          <%= f.submit "", style: "display:none;", id: "album-#{album.id}-submit" %>
-          <%= image_tag 'cart.png', class: "cart", onclick: "document.getElementById('album-#{album.id}-submit').click();" %>
-        <% end %>
+  <% if @albums.any? %>
+    <% @albums.each do |album| %>
+    <li class="album">
+      <div class="album-image-div">
+        <%= image_tag album.image %>
       </div>
-    </div>
-  </li>
+      <div class="album-info-div">
+        <strong><%= album.artist %> - <%= album.title %></strong><br>
+        <%= album.catalog %><br>
+        <%= number_to_currency album.price %>
+        <div class="cart-form">
+          <%= form_for @order_item do |f| %>
+            <%= f.hidden_field :album_id, value: album.id %>
+            <%= f.number_field :quantity, min: 1, max: 999, :required => true %>
+            <%= f.submit "", style: "display:none;", id: "album-#{album.id}-submit" %>
+            <%= image_tag 'cart.png', class: "cart", onclick: "document.getElementById('album-#{album.id}-submit').click();" %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  <% else %>
+    <% if params[:query] %><em>No results for "<%= params[:query] %>"</em><% end %>
   <% end %>
 </ul>
 
