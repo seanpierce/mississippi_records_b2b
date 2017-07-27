@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
   def current_order
     if session[:order_id]
       Order.find(session[:order_id])
-    elsif current_user.orders.any?
-      current_order = current_user.orders.first
     else
       current_user.orders.new
     end

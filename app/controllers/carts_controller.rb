@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
 
   def show
-    current_order.save
     @order_items = current_order.order_items.order(:created_at)
   end
 
@@ -26,9 +25,14 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    Order.find(current_order.id).destroy
+    @order = Order.find(current_order.id)
+    @order.status = "completed"
+    @order.save
+    session[:order_id] = nil
+    current_order
+
     flash[:notice] = "Thanks for placing your order. We'll be in touch."
-    redirect_to cart_path
+    redirect_to catalog_path
   end
 
 end

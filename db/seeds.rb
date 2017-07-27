@@ -36,7 +36,7 @@ class Seed
 
   def createUsers
     User.create!(
-      username: 'admin',
+      shop_name: 'mississippi eric',
       admin: true,
       email: 'admin@admin.com',
       password: '1234567',
@@ -44,7 +44,7 @@ class Seed
     )
 
     User.create!(
-      username: 'user',
+      shop_name: 'Sean\'s House of Wax',
       admin: false,
       email: 'user@user.com',
       password: '1234567',
