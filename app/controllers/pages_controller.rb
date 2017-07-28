@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   end
 
   def links
+    @posts = Post.page_posts("links")
   end
 
 end
