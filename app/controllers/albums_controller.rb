@@ -20,6 +20,8 @@ class AlbumsController < ApplicationController
   # item detail page
   def show
     @album = Album.find(params[:id])
+    @order_item = current_order.order_items.new
+    @more_from = Album.more_from(@album.artist, @album.title)
   end
 
 end

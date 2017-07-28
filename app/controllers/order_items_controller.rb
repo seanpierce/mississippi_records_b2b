@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
     @item = @order.order_items.new(item_params)
     if @order.save!
       session[:order_id] = @order.id
-      flash[:notice] = "#{@item.quantity} copies of #{@item.album.artist} - #{@item.album.title} added to cart."
+      flash[:notice] = "#{@item.quantity} copies of \"#{@item.album.artist} - #{@item.album.title}\" added to cart."
     else
       flash[:alert] = "Something went wrong. Please try again!"
     end

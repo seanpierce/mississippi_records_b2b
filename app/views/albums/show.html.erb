@@ -1,3 +1,39 @@
-<%= @album.title %>
+<%= render partial: "category-nav" %>
 
-<%= markdown(@album.description) %>
+<br>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= image_tag @album.image, class: 'album-detail-image' %>
+    <% if @album.audio.exists? %>
+      <audio controls><source src='<%= @album.audio %>'></audio>
+    <% end %>
+  </div>
+  <div class="col-sm-8">
+    <h3><%= @album.artist %></h3>
+    <h4><%= @album.title %></h4>
+    <strong><%= number_to_currency @album.price %></strong>
+    <p><%= markdown(@album.description) %></p>
+
+    <%= form_for @order_item do |f| %>
+      <%= f.hidden_field :album_id, value: @album.id %>
+      <%= f.number_field :quantity, min: 1, max: 999, :required => true %>
+      <%= f.submit "", style: "display:none;", id: "album-#{@album.id}-submit" %>
+      <%= image_tag 'cart.png', class: "cart", title: "Add \"#{@album.title}\" to cart", onclick: "document.getElementById('album-#{@album.id}-submit').click();" %>
+    <% end %>
+
+    <hr>
+
+    <% if @more_from.any? %>
+      <p>More from <%= @album.artist %></p>
+      <ul id="more-from">
+        <% @more_from.each do |more| %>
+          <li><a href="<%= album_path(more) %>"><%= image_tag more.image, title: "#{more.artist} - #{more.title}" %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= link_to "back", request.referer.present? ? request.referer + "#item-#{@album.id}" : catalog_path %>
+
+  </div>
+</div>

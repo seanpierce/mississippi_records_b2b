@@ -1,15 +1,3 @@
-<ul id="catalog-nav">
-  <li><%= link_to "All", catalog_path %></li>
-  <li><%= link_to "Mississippi Vinyl", catalog_path(category: "mrecs") %></li>
-  <li><%= link_to "Distributed Vinyl", catalog_path(category: "distro") %></li>
-  <li><%= link_to "Mississippi Cassettes", catalog_path(category: "mcass") %></li>
-  <li><%= link_to "Distributed Cassettes", catalog_path(category: "dcass") %></li>
-  <li><%= link_to "Other", catalog_path(category: "other") %></li>
-  <li id="search-li">
-    <form action="<%= albums_path %>" method="get">
-      <%= text_field_tag :query, nil, :placeholder => 'Search' %>
-    </form>
-  </li>
-</ul>
+<%= render partial: "category-nav" %>
 
-<%= render partial: "albums", locals: { albums: @albums }%>
+<%= render partial: "albums", locals: { albums: @albums } %>

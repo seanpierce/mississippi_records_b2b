@@ -11,13 +11,13 @@ class Album < ApplicationRecord
   validates :title, :artist, :price, :category, :catalog, presence: true
   validates :price, numericality: true
 
-  scope :category, -> (input) {
+  scope :category, -> (input) do
     if input != "all"
       where("category like ?", "#{input}")
     else
       Album.all
     end
-  }
+  end
 
   scope :category_title, -> (input) {
     if input === "mrecs"
@@ -39,6 +39,17 @@ class Album < ApplicationRecord
       album.title.downcase.match("#{query.downcase}") ||
       album.artist.downcase.match("#{query.downcase}")
     end
+  end
+
+  scope :more_from, -> (artist, title) do
+    all_albums = where("artist like ?", "#{artist}")
+    other_albums = []
+    all_albums.each do |album|
+      if album.title != title
+        other_albums.push(album)
+      end
+    end
+    other_albums
   end
 
 end

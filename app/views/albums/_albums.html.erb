@@ -4,20 +4,24 @@
   <br>
   <% if @albums.any? %>
     <% @albums.each do |album| %>
-    <li class="album">
+    <li class="album" id="item-<%= album.id %>">
       <div class="album-image-div">
-        <%= image_tag album.image %>
+        <a href="<%= album_path(album) %>">
+        <%= image_tag album.image, title: "#{album.artist} - #{album.title}", alt: "#{album.artist} - #{album.title}, album art" %>
+      </a>
       </div>
       <div class="album-info-div">
-        <strong><%= album.artist %> - <%= album.title %></strong><br>
-        <%= album.catalog %><br>
-        <%= number_to_currency album.price %>
-        <div class="cart-form">
+        <a href="<%= album_path(album) %>">
+          <strong><%= album.artist %> - <%= album.title %></strong><br>
+          <%= album.catalog %><br>
+          <%= number_to_currency album.price %>
+        </a>
+          <div class="cart-form">
           <%= form_for @order_item do |f| %>
             <%= f.hidden_field :album_id, value: album.id %>
             <%= f.number_field :quantity, min: 1, max: 999, :required => true %>
             <%= f.submit "", style: "display:none;", id: "album-#{album.id}-submit" %>
-            <%= image_tag 'cart.png', class: "cart", onclick: "document.getElementById('album-#{album.id}-submit').click();" %>
+            <%= image_tag 'cart.png', class: "cart", title: "Add \"#{album.title}\" to cart", onclick: "document.getElementById('album-#{album.id}-submit').click();" %>
           <% end %>
         </div>
       </div>
