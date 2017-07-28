@@ -1,1 +1,7 @@
-How To
+<h3>How to use this site</h3>
+
+<p>
+  <% @posts.each do |post| %>
+    <%= markdown(post.content) %>
+  <% end %>
+</p>

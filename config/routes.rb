@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items
 
+  resources :posts
+
   resource :cart, only: [:show]
 
   get '/catalog' , to: 'albums#index'

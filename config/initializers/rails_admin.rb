@@ -10,6 +10,10 @@ RailsAdmin.config do |config|
     end
   config.current_user_method(&:current_user)
 
+  # exclude order-items
+  config.excluded_models << OrderItem
+  config.excluded_models << Order
+
   ## == Cancan ==
   # config.authorize_with :cancan
 

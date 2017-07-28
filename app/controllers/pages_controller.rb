@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def how_to
+    @posts = Post.page_posts("how_to")
   end
 
   def aout_us
