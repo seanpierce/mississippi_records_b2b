@@ -8,7 +8,8 @@ class PagesController < ApplicationController
     @posts = Post.page_posts("how_to")
   end
 
-  def aout_us
+  def about_us
+    @posts = Post.page_posts("about")
   end
 
   def links

@@ -1,1 +1,7 @@
-About Us
+<h3>About Us</h3>
+
+<p>
+  <% @posts.each do |post| %>
+    <%= markdown(post.content) %>
+  <% end %>
+</p>
