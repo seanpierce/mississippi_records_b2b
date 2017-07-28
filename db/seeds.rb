@@ -29,7 +29,7 @@ class Seed
           "http://mississippirecords.store/images/uralthomasandthepain-st-lp.jpg",
           "http://mississippirecords.store/images/spacelady-greatesthits.jpg"
         ].sample),
-        audio: "http://mississippirecords.store/audio/deadmoon-dontburnthefires-graveyard.mp3"
+        audio: File.join("http://mississippirecords.store/audio/deadmoon-dontburnthefires-graveyard.mp3")
       )
     end
   end
