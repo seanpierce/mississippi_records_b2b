@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
 
-  before_action :protect_catalog!, only: [:index]
+  before_action :protect_catalog!
 
   # catalog page
   def index
